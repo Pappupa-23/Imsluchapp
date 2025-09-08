@@ -1,0 +1,12 @@
+@media (min-width: 768px) {
+  /* สำหรับแท็บเล็ต/คอม */
+  .menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  /* สำหรับมือถือ */
+  .menu {
+    grid-template-columns: 1fr;
+  }
+}
