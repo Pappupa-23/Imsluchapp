@@ -1,2 +1,7 @@
 # my-order-app
 app i'm sluch
+วิธี
+npm create vite@latest my-app -- --template react-ts
+cd my-app
+npm install
+npm run dev
