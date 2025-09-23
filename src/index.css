@@ -1,12 +1,41 @@
-@media (min-width: 768px) {
-  /* สำหรับแท็บเล็ต/คอม */
-  .menu {
-    grid-template-columns: repeat(2, 1fr);
-  }
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;800&display=swap");
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+body { margin: 0; font-family: "Prompt", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ใช้ container กลางเว็บร่วมกัน */
+.container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 1280px) { .container { padding: 0 24px; } }
+ 
+
+/* Footer ให้มันอยู่ล่างตลอด */
+:root{
+  --footer-h: 0px;       /* ถูกอัปเดตอัตโนมัติจาก Footer.jsx */
+  --footer-gap: 20px;    /* ระยะเผื่อเหนือฟุตเตอร์ ปรับเลขได้ */
 }
-@media (max-width: 767px) {
-  /* สำหรับมือถือ */
-  .menu {
-    grid-template-columns: 1fr;
+
+html, body, #root { height: 100%; }
+body { margin: 0; }
+
+/* กันคอนเทนต์โดนทับ + เว้นช่องว่างเหนือฟุตเตอร์ */
+body,
+.page{
+  padding-bottom: calc(var(--footer-h) + var(--footer-gap));
+}
+
+/* เผื่อ safe area (iPhone) */
+@supports (padding: max(0px)) {
+  body,
+  .page{
+    padding-bottom: max(
+      calc(var(--footer-h) + var(--footer-gap)),
+      calc(env(safe-area-inset-bottom) + var(--footer-gap))
+    );
   }
 }

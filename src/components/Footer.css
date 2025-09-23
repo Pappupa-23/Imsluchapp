@@ -1,0 +1,23 @@
+.footer-wrap{
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  background: #fff;
+  padding: 0; margin: 0;
+  border-radius: 0;
+  overflow-x: auto; /* ถ้าจอแคบมาก ให้เลื่อนซ้าย-ขวาแทนตัดบรรทัด */
+}
+
+.footer-wrap .container{ max-width: none; padding: 0; }
+
+.footer-strip{
+  display:flex; align-items:center; justify-content:center;
+  gap:24px; padding:10px 14px;
+  background: linear-gradient(90deg, var(--red-l) 0%, var(--red-m) 55%, var(--red-r) 100%);
+  color:#111; border:3px solid #111; border-radius:0; box-shadow:none;
+
+  /* บรรทัดเดียวเสมอ */
+  flex-wrap: nowrap; white-space: nowrap; min-width: max-content;
+}
+.foot-divider{ width:1px; height:22px; background:rgba(0,0,0,.35); flex:0 0 1px; }
+.foot-item, .foot-item * { white-space: nowrap; }

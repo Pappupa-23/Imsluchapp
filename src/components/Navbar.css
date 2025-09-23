@@ -1,0 +1,155 @@
+:root{
+  --nb-bg:#1f1f1f;
+
+  /* ไล่เฉดแดงเหมือนรูป */
+  --red-l:#ffd6d6;
+  --red-m:#ff3e3e;
+  --red-r:#ff7e7e;
+
+  /* สีปุ่มเมนู */
+  --tab-green:#b7ff3a;   /* ค่าเริ่มต้น */
+  --tab-blue:#59c2ff;    /* ชี้/อยู่หน้านั้น */
+  --tab-text:#111;
+}
+
+.container{max-width:1050px;margin:0 auto;padding:0 16px;}
+.nb{background:var(--nb-bg);color:#fff}
+
+/* ===== แถบด้านบน ===== */
+.nb-topbar{
+  background:linear-gradient(90deg,var(--red-l) 0%,var(--red-m) 55%,var(--red-r) 100%);
+  border-top:3px solid #111;
+  border-bottom:3px solid #111;
+}
+.nb-top{
+  display:grid;grid-template-columns:72px 1fr 56px;
+  align-items:center;padding:10px 0;
+}
+
+/* โลโก้ซ้าย: กล่องขาวขอบดำ */
+.left-logo{
+  display:flex;align-items:center;justify-content:center;
+  width:58px;height:58px;background:#fff;border:3px solid #111;border-radius:8px;
+  text-decoration:none;
+}
+.brand-logo{width:90%;height:90%;object-fit:contain}
+
+/* ชื่อร้านกลาง: พื้นดำกรอบขาว */
+.brand-center{
+  justify-self:center;
+  font-weight:800;font-size:28px;letter-spacing:.5px;text-transform:uppercase;
+  padding:4px 12px;background:#111;border:3px solid #fff;border-radius:8px;
+  text-shadow:0 2px 0 rgba(0,0,0,.35);
+}
+
+/* ตะกร้าขวาสุด: วงกลมดำกรอบขาว */
+.cart-btn{
+  display:grid;place-items:center;width:46px;height:46px;border-radius:50%;
+  background:#111;color:#fff;border:3px solid #fff;text-decoration:none;position:relative;
+}
+.cart .badge{
+  position:absolute;top:-6px;right:-6px;background:#e53935;color:#fff;border-radius:999px;
+  font-size:12px;padding:2px 6px;
+}
+
+/* ===== แถบด้านบน ===== */
+/* ทำส่วนบน (ไล่เฉดแดง) เต็มขอบ */
+.nb-topbar { margin: 0; }
+.nb-topbar .container{
+  max-width: none;   /* ✅ ไม่จำกัดความกว้าง */
+  padding: 0;        /* ✅ ไม่มีระยะข้าง */
+}
+
+/* ทำแถบเมนูเต็มขอบ */
+.nb-tabs{
+  background: #fff;
+  padding: 0;
+  margin: 0;
+  border-top: 3px solid #111;   /* เส้นบนแถบเมนู */
+}
+.nb-tabs .container{
+  max-width: none;  /* ✅ ไม่จำกัดความกว้าง */
+  padding: 0;       /* ✅ ไม่มีระยะข้าง */
+}
+
+/* ปุ่มเมนูยัง 4 อันเรียงแนวนอนตามเดิม */
+.tabs-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 0;           /* ไม่เว้นช่อง (จะไม่มีแถบพื้นหลังโผล่) */
+  padding: 0;
+}
+
+
+
+.nb .nb-tab{
+  text-align:center;
+  padding:12px 0;
+  background:var(--tab-green);
+  color:var(--tab-text);
+  font-weight:800;
+  text-decoration:none;
+  border:3px solid #111;     /* เส้นขอบดำ */
+  border-left-width:1.5px;   /* เส้นแบ่งระหว่างปุ่ม */
+  border-right-width:1.5px;
+  border-radius:0;           /* << ไม่มีขอบมน */
+  box-shadow:none;           /* ตัดแหวนขาว */
+  transition:background .15s ease;
+}
+
+/*เมนู 4 ย้ำให้ "ปุ่มแรก/สุดท้าย" ก็ไม่มีขอบมน */
+.tabs-grid .nb-tab:first-child,
+.tabs-grid .nb-tab:last-child{
+  border-radius:0;
+  border-left-width:3px;     /* รักษาความหนาขอบนอกซ้าย/ขวา */
+  border-right-width:3px;
+}
+
+/* ชี้/โฟกัส/อยู่หน้านั้น = ฟ้า */
+.nb .nb-tab:hover,
+.nb .nb-tab:focus-visible,
+.nb .nb-tab.is-current{
+  background:var(--tab-blue);
+}
+
+
+/* รองรับตัวอักษรที่ถูกแยก */
+.split-parent { contain: layout paint; }
+.split-char, .split-word { display: inline-block; will-change: transform, opacity; }
+
+
+/* -- แถบด้านบน: ลดขนาดบนจอเล็ก -- */
+@media (max-width: 900px){
+  .nb-top{ grid-template-columns:56px 1fr 44px; }
+  .brand-center{ font-size:22px; padding:2px 10px; }
+  .left-logo{ width:52px; height:52px; }
+}
+@media (max-width: 520px){
+  .brand-center{ font-size:18px; padding:2px 8px; border-width:2px; }
+  .left-logo{ width:46px; height:46px; border-width:2px; }
+  .cart-btn{ width:40px; height:40px; border-width:2px; }
+}
+
+/* -- เมนู 4 ปุ่ม: เดสก์ท็อป 4 คอลัมน์ / แท็บเล็ต 2x2 / มือถือ 1 คอลัมน์ -- */
+.tabs-grid{ grid-template-columns: repeat(4, 1fr); } /* เดสก์ท็อป */
+@media (max-width: 420px){
+  .nb .nb-tab{ padding:8px 0; font-size:14px; }
+}
+
+/* Force 4 columns on all screens บังคับให้มันแนวนอน*/
+.tabs-grid{ grid-template-columns: repeat(4, minmax(0,1fr)) !important; }
+
+/* ===== FIX: เอาแถบ/เส้นดำคั่นเหนือเมนู 4 ปุ่มออก ===== */
+.nb-topbar{
+  border-bottom: 0 !important;   /* ตัดเส้นดำล่างของแถบไล่เฉด */
+}
+
+.nb-tabs{
+  border-top: 0 !important;      /* ตัดเส้นดำบนของแถบเมนู */
+}
+
+/* กันกรณีมีเงาสร้างเป็นเส้น */
+.nb-topbar,
+.nb-tabs{
+  box-shadow: none !important;
+}

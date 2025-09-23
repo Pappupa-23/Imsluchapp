@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import './home.css'; // นำเข้าไฟล์ home.css
 
 function Home({ setCartCount }) {
   const [promoIndex, setPromoIndex] = useState(0);
+
   const promos = [
     { img: "/promo1.jpg", desc: "ซื้อ 1 แถม 1 สเลอปี้" },
     { img: "/promo2.jpg", desc: "แจ้งวันหยุดวันตรุษจีน" },
@@ -13,30 +15,52 @@ function Home({ setCartCount }) {
   const prevPromo = () => setPromoIndex((promoIndex - 1 + promos.length) % promos.length);
 
   return (
-    <div className="home">
-      <h2>โปรโมชั่น</h2>
-      <div className="promo">
-        <button onClick={prevPromo}>◀</button>
+    <div className="home page">
+      {/* Promo Section */}
+      <section className="section-promo container">
+        <div className="promo-banner">
+          <div className="promo-title">! NEWS !</div>
 
-        {/* ✅ เปิดใช้งานรูปตรงนี้ */}
-        <img
-          src={promos[promoIndex].img}
-          alt={`โปรโมชั่น ${promoIndex + 1}`}
-          className="promo-img"
-        />
+          {/* Promo Slider */}
+          <div className="promo-slider">
+            <button onClick={prevPromo} className="slider-btn left">‹</button>
+            <img
+              src={promos[promoIndex].img}
+              alt={promos[promoIndex].desc}
+              className="promo-img"
+            />
+            <button onClick={nextPromo} className="slider-btn right">›</button>
+          </div>
 
-        <button onClick={nextPromo}>▶</button>
-      </div>
+          <p>{promos[promoIndex].desc}</p>
+        </div>
+      </section>
 
-      <p>{promos[promoIndex].desc}</p>
+      {/* Menu Cards */}
+     <section className="section-menu">
+  <div className="menu-cards">
+    {/* เมนูอาหาร */}
+    <Link to="/menu/food" className="menu-card is-link" aria-label="ไปที่เมนูอาหาร">
+      <img src="/menu_food.png" alt="เมนูอาหาร" className="menu-image" />
+      <h3 className="menu-title">เมนูอาหาร</h3>
+      <span className="menu-btn">คลิก</span>
+    </Link>
 
-      <button onClick={() => setCartCount((c) => c + 1)}>สั่งซื้อ</button>
+    {/* ฟาสต์ฟู้ด */}
+    <Link to="/menu/fastfood" className="menu-card is-link" aria-label="ไปที่ฟาสต์ฟู้ด">
+      <img src="/menu_fastfood.png" alt="ฟาสต์ฟู้ด" className="menu-image" />
+      <h3 className="menu-title">ฟาสต์ฟู้ด</h3>
+      <span className="menu-btn">คลิก</span>
+    </Link>
 
-      <div className="menu-links">
-        <Link to="/menu/food">🍛 เมนูอาหาร</Link>
-        <Link to="/menu/fastfood">🍔 ฟาสต์ฟู้ด</Link>
-        <Link to="/menu/drink">🥤 เครื่องดื่ม</Link>
-      </div>
+    {/* เครื่องดื่ม */}
+    <Link to="/menu/drink" className="menu-card is-link" aria-label="ไปที่เครื่องดื่ม">
+      <img src="/menu_drink.png" alt="เครื่องดื่ม" className="menu-image" />
+      <h3 className="menu-title">เครื่องดื่ม</h3>
+      <span className="menu-btn">คลิก</span>
+    </Link>
+  </div>
+</section>
     </div>
   );
 }
