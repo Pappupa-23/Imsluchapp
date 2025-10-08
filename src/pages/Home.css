@@ -20,11 +20,10 @@
   letter-spacing:.4px;
 
   /* ดันให้ห่าง Navbar และชิดรูปด้านล่าง */
-  margin: 28px 0 6px !important;   /* TOP ↑ เพิ่ม, BOTTOM ↓ ลด */
+  margin: 18px 0 10px;   /* TOP ↑ ลด, BOTTOM ↓ เพิ่ม (ทำให้ห่างจากรูปมากขึ้น) */
   text-align:center;
   line-height: 1.15;
-  /* ขนาดตัวอักษรแบบ responsive */
-  font-size: clamp(18px, 2.4vw, 28px);
+  font-size: clamp(18px, 2.4vw, 28px);  /* ขนาดตัวอักษรปรับตามหน้าจอ */
 }
 
 /* ===== โซนโปรโมชัน (คงกึ่งกลาง และไม่เพิ่มช่องบน) ===== */
@@ -45,14 +44,26 @@
   display:inline-block;
 }
 
-/* มือถือ: ตัวอักษรพอดีตาและชิดพอเหมาะ */
+/* ----- มือถือ: ชิดขึ้นเล็กน้อย ----- */
 @media (max-width: 520px){
   .promo-title{
-    font-size: 18px;               /* เด่นพอดีบนจอเล็ก */
+    font-size: 18px;               /* ขนาดตัวอักษรเด่นพอดีบนจอเล็ก */
     margin: 22px 0 4px !important; /* ห่าง Navbar แต่ชิดรูปลงอีกนิด */
   }
   .promo-banner{ margin: 0 auto 4px !important; }
 }
+
+/* ==== ปรับขอบรูปโปรโมชัน (ไม่ให้หนาเกินไป) ==== */
+.promo-img{
+  display: block;
+  width: 100%;              /* กว้างเต็มกรอบ */
+  height: auto;
+  object-fit: contain;      /* เห็นรูปเต็ม ไม่ครอป */
+  margin: 0;
+  border: 1px solid #000;   /* ลดขนาดขอบลงจาก 2px เป็น 1px */
+  border-radius: 14px;      /* ขอบโค้งเล็กน้อย */
+}
+
 
 
 
@@ -128,59 +139,86 @@
 
 /* ใช้ grid 3 คอลัมน์ + จัดกลางทั้งแถว */
 .menu-cards{
-  display:grid;
+  display: grid;
   grid-template-columns: repeat(3, clamp(90px, 28vw, 220px));
   justify-content: center;     /* กลางทั้งแถว */
   gap: clamp(8px, 2vw, 16px);
   align-items: stretch;
-  overflow:visible;            /* ไม่มีสกอร์ลแนวนอน */
+  overflow: visible;            /* ไม่มีสกอร์ลแนวนอน */
 }
 
 /* การ์ด/รูป/ปุ่ม (พื้นฐาน) */
-.menu-card{ width:100%; }
-.menu-image{
-  width:100%;
-  aspect-ratio:4/3;
-  object-fit:cover;
-  border-radius:8px;
-  background:#f2f2f2;
-}
-.menu-title{ font-size:1.1rem; margin:10px 0; }
-.menu-btn{
-  display: flex;                /* จัดกลางด้วย flex */
-  align-items: center;          /* กลางแนวตั้ง */
-  justify-content: center;      /* กลางแนวนอน */
+.menu-card{ width: 100%; } 
 
-  background-color:#ff5c5c;     /* สีเดิม */
-  color:#fff;                   /* สีเดิม */
-  padding:8px 16px;
-  border-radius:5px;
-  text-decoration:none;
-  margin-top:10px;
-  font-weight:700;
-  line-height:1;                /* กันตัวอักษรลอย */
+/* รูปเมนูที่ต้องการแสดงเต็มๆ */
+.menu-image{
+  width: 100%;  /* กำหนดให้รูปเต็มการ์ด */
+  height: auto; /* ไม่บีบรูป */
+  object-fit: contain; /* ให้รูปแสดงเต็มและไม่ครอป */
+  border-radius: 8px;
+  background: #f2f2f2;
+}
+
+/* ขนาดตัวอักษรของชื่อเมนู */
+.menu-title{ 
+  font-size: 1.1rem; 
+  margin: 10px 0; 
+}
+
+/* ปุ่ม */
+.menu-btn{
+  display: flex;                 /* จัดกลางด้วย flex */
+  align-items: center;           /* กลางแนวตั้ง */
+  justify-content: center;       /* กลางแนวนอน */
+  background-color: #ff5c5c;     /* สีเดิม */
+  color: #fff;                   /* สีเดิม */
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: 700;
+  line-height: 1;                /* กันตัวอักษรลอย */
 }
 
 .menu-btn:hover{
-  background-color:#ff3b3b;     /* สีเดิม */
-  transition:background-color .2s;
+  background-color: #ff3b3b;     /* สีเดิม */
+  transition: background-color .2s;
 }
 
-
 /* การ์ดเป็นลิงก์เต็มใบ */
-.menu-card.is-link{ display:flex; flex-direction:column; height:100%; color:inherit; text-decoration:none; cursor:pointer; }
-.menu-card.is-link:hover{ transform:scale(1.03); box-shadow:0 8px 16px rgba(0,0,0,.18); }
-.menu-card.is-link:focus-visible{ outline:3px solid #59c2ff; outline-offset:3px; }
-.menu-card.is-link .menu-btn{ pointer-events:none; }
+.menu-card.is-link{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.menu-card.is-link:hover{
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .18);
+}
+
+.menu-card.is-link:focus-visible{
+  outline: 3px solid #59c2ff;
+  outline-offset: 3px;
+}
+
+.menu-card.is-link .menu-btn{
+  pointer-events: none;
+}
 
 /* ===== Responsive ===== */
 
+
 /* <=680px: ลดระยะ + ย่อปุ่มเลื่อน */
-@media (max-width:680px){
-  .section-promo{ padding-inline:10px; margin-top:12px; }
-  .promo-banner{ width:min(520px,96%); }
-  .slider-btn{ width:40px; height:30px; font-size:16px; border-radius:12px; }
-  .slider-btn.left{ left:-14px; } .slider-btn.right{ right:-14px; }
+@media (max-width: 680px){
+  .section-promo{ padding-inline: 10px; margin-top: 12px; }
+  .promo-banner{ width: min(520px, 96%); }
+  .slider-btn{ width: 40px; height: 30px; font-size: 16px; border-radius: 12px; }
+  .slider-btn.left{ left: -14px; } 
+  .slider-btn.right{ right: -14px; }
 }
 
 /* === MOBILE FIX (แทนที่ทั้งก้อนเดิม) === */
@@ -247,30 +285,7 @@
   .slider-btn.right { right: -12px; }
 
 
-  /* ----- MENU: 3 ใบในแถวเดียว + เห็นรูปเต็ม + ชื่อบรรทัดเดียว ----- */
-  .section-menu{ padding-inline: 8px; margin-top: 10px; }
-
-  .menu-cards{
-    display: grid !important;
-    grid-template-columns: repeat(3, 1fr); /* บังคับ 3 คอลัมน์ */
-    gap: 8px;
-    overflow: visible;                     /* ไม่ให้เกิดสกอร์ลแนวนอน */
-  }
-
-  .menu-card{
-    padding: 8px;                          /* ลด padding ให้พอดีจอ */
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,.08);
-  }
-
-  .menu-image{
-    aspect-ratio: 1 / 1;                   /* จัตุรัสบนมือถือ */
-    object-fit: contain;                    /* เห็นรูปเต็ม ไม่ครอป */
-    background: #fff;
-    padding: 4px;                           /* ลดช่องว่างรอบรูป */
-    border-radius: 8px;
-  }
-
+  
   /* ชื่อการ์ด: บรรทัดเดียว (ถ้ายาวตัดด้วย …) */
   .menu-title{
     font-size: .95rem;
