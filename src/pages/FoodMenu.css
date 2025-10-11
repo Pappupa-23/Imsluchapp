@@ -1,0 +1,84 @@
+.menu-section {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  height: calc(100vh - 100px); /* ทำให้ความสูงของเมนูยืดได้ตามขนาดหน้าจอ (ลดความสูงจาก footer) */
+  overflow-y: auto; /* เพิ่ม scroll bar แนวตั้งหากมีเนื้อหามากเกิน */
+}
+
+.menu-section h2 {
+  font-size: 24px;
+  text-align: center;
+  color: #111;
+  margin-bottom: 20px;
+}
+
+.menu-grid {
+  display: flex;               /* ใช้ Flexbox เพื่อจัดให้อยู่ในแถวเดียว */
+  flex-direction: column;      /* แสดงเมนูในแนวตั้ง */
+  overflow-y: auto;            /* เพิ่ม scroll bar แนวตั้งเมื่อเนื้อหามากเกิน */
+  gap: 16px;                   /* ระยะห่างระหว่างการ์ดแต่ละใบ */
+  padding-bottom: 16px;        /* เพิ่มช่องว่างด้านล่างเพื่อให้ scroll bar ชัดเจน */
+  margin-bottom: 100px;        /* เว้นช่องว่างระหว่างเมนูและ footer */
+}
+
+.menu-card {
+  display: flex;               /* ใช้ flexbox เพื่อจัดวางรายการ */
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;         /* จัดตำแหน่งให้แนวนอนอยู่กลาง */
+  width: 100%;                 /* กำหนดให้การ์ดใช้พื้นที่เต็ม */
+  flex-shrink: 0;              /* ป้องกันไม่ให้การ์ดหดตัว */
+}
+
+.menu-card img {
+  width: 140px;                /* ขนาดรูปภาพ */
+  height: 140px;               /* ให้รูปเป็นสี่เหลี่ยมจัตุรัส */
+  object-fit: cover;           /* ให้รูปเต็มกรอบโดยไม่บิดเบือน */
+  margin-right: 16px;          /* เว้นระยะระหว่างรูปและข้อมูล */
+  border-radius: 8px;          /* มุมโค้ง */
+  border: 2px solid black;     /* เพิ่มขอบดำรอบๆ รูปภาพ */
+}
+
+.menu-card .menu-details {
+  display: flex;               /* ใช้ flexbox เพื่อจัดเรียงข้อมูล */
+  flex-direction: column;      /* จัดให้ข้อมูลอยู่ในแนวตั้ง */
+  justify-content: space-between; /* จัดข้อมูลให้ห่างกัน */
+  flex-grow: 1;                 /* ให้ข้อมูลขยายเต็มพื้นที่ */
+}
+
+.menu-card h3 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: clamp(14px, 4vw, 18px);
+}
+
+.menu-card p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.menu-card button {
+  background-color: #ff5c5c;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+  max-width: 100%;
+}
+
+.menu-card button:hover {
+  background-color: #ff3b3b;
+}
