@@ -9,11 +9,11 @@ export default function Footer() {
     if (!el) return;
 
     const setH = () => {
-      const h = el.offsetHeight; // รวมเส้นขอบเรียบร้อย
-      document.documentElement.style.setProperty("--footer-h", `${h}px`);
+      const h = el.offsetHeight;
+      document.documentElement.style.setProperty("--footer-h", `${h + 10}px`);
     };
 
-    setH(); // ครั้งแรก
+    setH();
     const ro = new ResizeObserver(setH);
     ro.observe(el);
     window.addEventListener("resize", setH);
@@ -32,7 +32,9 @@ export default function Footer() {
         <div ref={stripRef} className="footer-strip">
           <div className="foot-item">
             <span className="fi">⏰</span>
-            <span>เปิดบริการ <strong>10:00–21:00</strong></span>
+            <span>
+              เปิดบริการ <strong className="open-time">10:00–21:00</strong>
+            </span>
           </div>
           <span className="foot-divider" />
           <a href="tel:0971595498" className="foot-item foot-tel">

@@ -1,0 +1,144 @@
+.cart-section {
+  padding: 20px;
+  padding-bottom: calc(var(--footer-h, 80px) + 20px);
+}
+
+.empty-cart {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cart-item {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.cart-info {
+  display: flex;
+  justify-content: space-between; /* ✅ ปุ่มลบไปอยู่ขวาสุด */
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.cart-info > div {
+  flex: 1;
+}
+
+.remove-btn {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  height: fit-content;
+  align-self: flex-start; /* ✅ ให้ชิดบนของรายการ */
+}
+
+.remove-btn:hover {
+  background: #d9363e;
+}
+
+.addons-detail p {
+  font-size: 14px;
+  color: #444;
+  margin: 2px 0;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.quantity-controls button {
+  background: #ff7575;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.quantity-controls button:last-child {
+  background: #b6ff5c;
+  color: #000;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  text-align: center;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.order-btn {
+  margin-top: 10px;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 24px 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.addmore-btn {
+  margin-top: 16px;
+  background: #ffc107;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+/* ✅ เพิ่มโค้ดนี้ต่อท้ายไฟล์ของคุณ */
+.quantity-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.remove-btn {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.remove-btn:hover {
+  background-color: #d93636;
+}

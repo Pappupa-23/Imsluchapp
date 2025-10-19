@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import './home.css'; // นำเข้าไฟล์ home.css
+import './Home.css'; // นำเข้าไฟล์ home.css
 
 function Home({ setCartCount }) {
   const [promoIndex, setPromoIndex] = useState(0);

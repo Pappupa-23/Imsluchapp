@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer"; // ✅ เพิ่ม
+import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
 import FoodMenu from "./pages/FoodMenu";
@@ -13,45 +13,67 @@ import Cart from "./pages/Cart";
 function App() {
   const [cartItems, setCartItems] = useState([]);
 
-  // เพิ่มสินค้า
+  // ✅ เพิ่มสินค้าในตะกร้า (สร้าง id ไม่ซ้ำ)
   const addToCart = (item) => {
-    setCartItems((prev) => {
-      const exist = prev.find((p) => p.name === item.name);
-      if (exist) {
-        return prev.map((p) =>
-          p.name === item.name ? { ...p, qty: p.qty + 1 } : p
-        );
-      }
-      return [...prev, { ...item, qty: 1 }];
-    });
+    const newItem = {
+      ...item,
+      id: Date.now() + Math.random(),
+      qty: 1,
+    };
+    setCartItems((prev) => [...prev, newItem]);
   };
 
-  // อัปเดตจำนวน
-  const updateQty = (name, qty) => {
-    if (qty <= 0) {
-      setCartItems((prev) => prev.filter((p) => p.name !== name));
-    } else {
-      setCartItems((prev) =>
-        prev.map((p) => (p.name === name ? { ...p, qty } : p))
-      );
-    }
+  // ✅ อัปเดตจำนวนสินค้า
+  const updateQty = (id, qty) => {
+    setCartItems((prev) =>
+      prev.map((item) =>
+        item.id === id ? { ...item, qty: Math.max(1, qty) } : item
+      )
+    );
   };
 
-  const cartCount = cartItems.reduce((sum, i) => sum + i.qty, 0); // ✅ ชัดขึ้น
+  // ✅ ลบสินค้าออก
+  const removeItem = (id) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  // ✅ เคลียร์ตะกร้า
+  const clearCart = () => setCartItems([]);
+
+  // ✅ นับจำนวนรวมสินค้าใน Navbar
+  const cartCount = cartItems.reduce((sum, item) => sum + (item.qty || 1), 0);
 
   return (
     <>
       <Navbar cartCount={cartCount} />
 
-      <Routes>
-        <Route path="/" element={<Home addToCart={addToCart} />} />
-        <Route path="/menu/food" element={<FoodMenu addToCart={addToCart} />} />
-        <Route path="/menu/fastfood" element={<FastFoodMenu addToCart={addToCart} />} />
-        <Route path="/menu/drink" element={<DrinkMenu addToCart={addToCart} />} />
-        <Route path="/cart" element={<Cart cartItems={cartItems} updateQty={updateQty} />} />
-      </Routes>
+      <div style={{ minHeight: "calc(100vh - 160px)" }}>
+        <Routes>
+          <Route path="/" element={<Home addToCart={addToCart} />} />
+          <Route path="/menu/food" element={<FoodMenu addToCart={addToCart} />} />
+          <Route
+            path="/menu/fastfood"
+            element={<FastFoodMenu addToCart={addToCart} />}
+          />
+          <Route
+            path="/menu/drink"
+            element={<DrinkMenu addToCart={addToCart} />}
+          />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                cartItems={cartItems}
+                updateQty={updateQty}
+                removeItem={removeItem}
+                clearCart={clearCart}
+              />
+            }
+          />
+        </Routes>
+      </div>
 
-      <Footer /> {/* ✅ แสดงทุกหน้า */}
+      <Footer />
     </>
   );
 }

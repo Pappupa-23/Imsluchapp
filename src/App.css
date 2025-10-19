@@ -122,3 +122,255 @@ footer {
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
+/* รีเซ็ต style พื้นฐาน */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* พื้นหลังหลัก */
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  background: #ff6b6b;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar h1 {
+  font-size: 1.5rem;
+}
+
+.navbar .cart {
+  background: #fff;
+  color: #ff6b6b;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Promo Slider */
+.promo-slider {
+  width: 100%;
+  overflow: hidden;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.promo-slider img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ปุ่มทั่วไป */
+button {
+  background: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #ff4b4b;
+}
+
+/* Section แสดงเมนู */
+.menu-section {
+  padding: 1rem;
+  text-align: center;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.menu-card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+}
+
+.menu-card img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.menu-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Footer */
+footer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #343a40;
+  color: #fff;
+  text-align: center;
+  border-radius: 12px 12px 0 0;
+}
+
+/* Promotion */
+.promo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.promo-img {
+  width: 250px;
+  max-width: 80%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* 🔸 Popup Add-on */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.addon-group {
+  text-align: left;
+  margin: 15px 0;
+}
+
+.addon-group h4 {
+  margin-bottom: 5px;
+  color: #ff6b6b;
+}
+
+.addon-group label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.popup-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.addon-list {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 5px;
+  list-style: none;
+  padding-left: 10px;
+}
+
+/* ✅ ช่องรายละเอียดเพิ่มเติม (Textarea) */
+.popup-content textarea {
+  width: 100%;
+  height: 100px;          /* ความสูงพอดี popup */
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  resize: none;           /* ❌ ปิดการขยายขนาด */
+  box-sizing: border-box;
+  margin-top: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.popup-content textarea:focus {
+  outline: none;
+  border-color: #ff6b6b;  /* เพิ่มสีตอนโฟกัส */
+}
+
+/* ✅ Popup ยืนยันการสั่งซื้อ */
+.order-success {
+  text-align: center;
+  padding: 30px;
+}
+
+.success-icon {
+  background-color: #ff6b6b;
+  color: #fff;
+  font-size: 2.5rem;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+}
+
+.order-success h2 {
+  color: #ff6b6b;
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.order-success p {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.add-more-btn {
+  background-color: #ff3b3b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-more-btn:hover {
+  background-color: #e22b2b;
+}
+
+:root {
+  --footer-h: 60px; /* fallback เผื่อค่าไม่ถูกตั้งจาก JS */
+}
+
+/* ให้ทุกหน้าหลักเผื่อพื้นที่ด้านล่าง */
+main, .page-content, .cart-container {
+  padding-bottom: var(--footer-h);
+}

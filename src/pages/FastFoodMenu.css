@@ -81,3 +81,10 @@
 .menu-card button:hover {
   background-color: #ff3b3b;
 }
+.alert-message {
+  white-space: pre-line;
+}
+.popup-content--alert p {
+  white-space: pre-line;
+}
+

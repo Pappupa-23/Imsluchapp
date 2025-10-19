@@ -1,10 +1,11 @@
+/* ===== จากไฟล์: โครงหน้าเมนูพื้นฐาน ===== */
 .menu-section {
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  height: calc(100vh - 100px); /* ทำให้ความสูงของเมนูยืดได้ตามขนาดหน้าจอ (ลดความสูงจาก footer) */
-  overflow-y: auto; /* เพิ่ม scroll bar แนวตั้งหากมีเนื้อหามากเกิน */
+  height: calc(100vh - 100px); /* เผื่อพื้นที่ให้ footer */
+  overflow-y: auto;
 }
 
 .menu-section h2 {
@@ -14,44 +15,44 @@
   margin-bottom: 20px;
 }
 
+/* ===== จากคุณ (ยึดเป็นหลัก): layout การ์ดแบบ grid ===== */
 .menu-grid {
-  display: flex;               /* ใช้ Flexbox เพื่อจัดให้อยู่ในแถวเดียว */
-  flex-direction: column;      /* แสดงเมนูในแนวตั้ง */
-  overflow-y: auto;            /* เพิ่ม scroll bar แนวตั้งเมื่อเนื้อหามากเกิน */
-  gap: 16px;                   /* ระยะห่างระหว่างการ์ดแต่ละใบ */
-  padding-bottom: 16px;        /* เพิ่มช่องว่างด้านล่างเพื่อให้ scroll bar ชัดเจน */
-  margin-bottom: 100px;        /* เว้นช่องว่างระหว่างเมนูและ footer */
+  display: grid;
+  gap: 16px;
+  /* เสริมจากไฟล์: เผื่อระยะกับ footer/scroll */
+  padding-bottom: 16px;
+  margin-bottom: 100px;
 }
 
+/* ===== จากคุณ (ยึดเป็นหลัก): card พื้นฐาน ===== */
 .menu-card {
-  display: flex;               /* ใช้ flexbox เพื่อจัดวางรายการ */
-  background-color: #f9f9f9;
-  padding: 16px;
+  border: 1px solid #ccc;
+  padding: 12px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  align-items: center;         /* จัดตำแหน่งให้แนวนอนอยู่กลาง */
-  width: 100%;                 /* กำหนดให้การ์ดใช้พื้นที่เต็ม */
-  flex-shrink: 0;              /* ป้องกันไม่ให้การ์ดหดตัว */
+  text-align: center;
 }
 
+/* ===== เสริมจากไฟล์: รองรับการ์ดที่มีรูปและรายละเอียด ===== */
 .menu-card img {
-  width: 140px;                /* ขนาดรูปภาพ */
-  height: 140px;               /* ให้รูปเป็นสี่เหลี่ยมจัตุรัส */
-  object-fit: cover;           /* ให้รูปเต็มกรอบโดยไม่บิดเบือน */
-  margin-right: 16px;          /* เว้นระยะระหว่างรูปและข้อมูล */
-  border-radius: 8px;          /* มุมโค้ง */
-  border: 2px solid black;     /* เพิ่มขอบดำรอบๆ รูปภาพ */
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  margin-right: 16px;
+  border-radius: 8px;
+  border: 2px solid black;
 }
 
+/* ไม่บังคับให้ .menu-card เป็น flex เพื่อไม่ชนกับ grid ของคุณ
+   แต่ให้รายละเอียดจัดแนวสวยขึ้นได้หากมี wrapper นี้ */
 .menu-card .menu-details {
-  display: flex;               /* ใช้ flexbox เพื่อจัดเรียงข้อมูล */
-  flex-direction: column;      /* จัดให้ข้อมูลอยู่ในแนวตั้ง */
-  justify-content: space-between; /* จัดข้อมูลให้ห่างกัน */
-  flex-grow: 1;                 /* ให้ข้อมูลขยายเต็มพื้นที่ */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
 }
 
+/* จากไฟล์: ตัวอักษรในการ์ด */
 .menu-card h3 {
-  font-size: 16px;
   font-weight: bold;
   color: #333;
   margin-bottom: 8px;
@@ -67,6 +68,7 @@
   margin-bottom: 12px;
 }
 
+/* จากไฟล์: ปุ่มใน card (ปุ่มสั่งซื้อ) */
 .menu-card button {
   background-color: #ff5c5c;
   color: #fff;
@@ -78,7 +80,97 @@
   transition: background-color 0.2s ease;
   max-width: 100%;
 }
-
 .menu-card button:hover {
   background-color: #ff3b3b;
+}
+
+/* ===== จากคุณ (ยึดเป็นหลัก): Popup base ===== */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-overlay--alert {
+  z-index: 1100;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-content--alert {
+  text-align: center;
+  width: 85%;
+  max-width: 360px;
+}
+
+/* ===== จากคุณ (ยึดเป็นหลัก): Typography ===== */
+.selected-price {
+  font-weight: 700;
+  font-size: 18px;
+  color: #444;
+}
+
+/* ===== จากคุณ (ยึดเป็นหลัก): Addon groups ===== */
+.addon-group {
+  margin-top: 12px;
+}
+.addon-group .required {
+  color: red;
+}
+.addon-group label {
+  display: block;
+  margin: 4px 0;
+}
+.addon-group textarea {
+  width: 100%;
+  resize: none;
+}
+
+/* ===== จากคุณ (ยึดเป็นหลัก): Buttons ใน popup ===== */
+.popup-buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.btn-confirm {
+  background: #b6ff5c;
+  color: #000;
+}
+.btn-cancel {
+  background: #ff7575;
+  color: #fff;
+}
+.btn-ok {
+  margin-top: 12px;
+  padding: 6px 12px;
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* ===== จากคุณ (ยึดเป็นหลัก): Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
 }

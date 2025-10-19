@@ -1,23 +1,88 @@
-.footer-wrap{
+.footer-wrap {
   position: fixed;
-  left: 0; right: 0; bottom: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1000;
   background: #fff;
-  padding: 0; margin: 0;
-  border-radius: 0;
-  overflow-x: auto; /* ถ้าจอแคบมาก ให้เลื่อนซ้าย-ขวาแทนตัดบรรทัด */
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 2px solid #222;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.footer-wrap .container{ max-width: none; padding: 0; }
-
-.footer-strip{
-  display:flex; align-items:center; justify-content:center;
-  gap:24px; padding:10px 14px;
-  background: linear-gradient(90deg, var(--red-l) 0%, var(--red-m) 55%, var(--red-r) 100%);
-  color:#111; border:3px solid #111; border-radius:0; box-shadow:none;
-
-  /* บรรทัดเดียวเสมอ */
-  flex-wrap: nowrap; white-space: nowrap; min-width: max-content;
+.footer-wrap .container {
+  max-width: 100%;
+  padding: 0;
+  margin: 0 auto;
 }
-.foot-divider{ width:1px; height:22px; background:rgba(0,0,0,.35); flex:0 0 1px; }
-.foot-item, .foot-item * { white-space: nowrap; }
+
+/* ✅ ขนาด footer เดิม + ปรับฟอนต์และระยะวรรค */
+.footer-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px 14px;
+  background: linear-gradient(
+    90deg,
+    var(--red-l, #ff9999) 0%,
+    var(--red-m, #ff6666) 55%,
+    var(--red-r, #ff3333) 100%
+  );
+  color: #111;
+  border-top: 3px solid #111;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.footer-strip span,
+.footer-strip strong,
+.foot-item {
+  font-size: clamp(13px, 2.6vw, 18px); /* ✅ ฟอนต์ใหญ่ขึ้น */
+  display: flex;
+  align-items: center;
+}
+
+.foot-item {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* ✅ เว้นช่องว่างเพิ่ม */
+}
+
+.open-time {
+  margin-left: 6px; /* ✅ เพิ่มวรรคระหว่าง "เปิดบริการ" กับเวลา */
+}
+
+.foot-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+.foot-tel {
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+}
+
+@media (max-width: 400px) {
+  .footer-strip {
+    gap: 12px;
+    padding: 8px;
+  }
+
+  .foot-item {
+    gap: 5px;
+    font-size: clamp(11px, 3.5vw, 16px);
+  }
+
+  .open-time {
+    margin-left: 4px;
+  }
+}
