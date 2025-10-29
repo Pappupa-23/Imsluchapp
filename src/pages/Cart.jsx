@@ -4,6 +4,7 @@ import "./Cart.css";
 
 function Cart({ cartItems, updateQty, removeItem, clearCart }) {
   const [orderSuccess, setOrderSuccess] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(null);
   const navigate = useNavigate();
 
   const calculateTotal = () =>
@@ -18,6 +19,17 @@ function Cart({ cartItems, updateQty, removeItem, clearCart }) {
     clearCart();
     setOrderSuccess(false);
     navigate("/");
+  };
+
+  const handleConfirmRemove = (id) => {
+    setConfirmDelete(id);
+  };
+
+  const handleDeleteConfirmed = () => {
+    if (confirmDelete) {
+      removeItem(confirmDelete);
+      setConfirmDelete(null);
+    }
   };
 
   return (
@@ -75,7 +87,6 @@ function Cart({ cartItems, updateQty, removeItem, clearCart }) {
                         ซอส: {item.addons.sauce.map((s) => s.name).join(", ")}
                       </p>
                     )}
-
                   {Array.isArray(item.addons?.pizzaOption) &&
                     item.addons.pizzaOption.length > 0 && (
                       <p>
@@ -83,17 +94,22 @@ function Cart({ cartItems, updateQty, removeItem, clearCart }) {
                         {item.addons.pizzaOption.map((p) => p.name).join(", ")}
                       </p>
                     )}
-
                   {item.addons?.sweetness && (
                     <p>ระดับความหวาน: {item.addons.sweetness}</p>
                   )}
                   {item.addons?.cold && <p>อุณหภูมิ: {item.addons.cold}</p>}
-
                   {item.addons?.note && <p>เพิ่มเติม: {item.addons.note}</p>}
                 </div>
 
-                {/* ✅ แก้ layout ปุ่มให้ลบอยู่ขวาสุด */}
-                <div className="quantity-row">
+                {/* ✅ ปรับ layout */}
+                <div
+                  className="quantity-row"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
                   <div className="quantity-controls">
                     <button
                       onClick={() => updateQty(item.id, (item.qty || 1) - 1)}
@@ -109,7 +125,14 @@ function Cart({ cartItems, updateQty, removeItem, clearCart }) {
                   </div>
                   <button
                     className="remove-btn"
-                    onClick={() => removeItem(item.id)}
+                    onClick={() => handleConfirmRemove(item.id)}
+                    style={{
+                      backgroundColor: "green",
+                      color: "#fff",
+                      padding: "5px 10px",
+                      border: "none",
+                      borderRadius: "6px",
+                    }}
                   >
                     ลบ
                   </button>
@@ -125,6 +148,35 @@ function Cart({ cartItems, updateQty, removeItem, clearCart }) {
             </button>
           </div>
         </>
+      )}
+
+      {confirmDelete && (
+        <div className="popup-overlay">
+          <div className="popup-content">
+            <h3>⚠️ ยืนยันการลบ</h3>
+            <p>คุณต้องการลบสินค้านี้ออกจากตะกร้าหรือไม่?</p>
+            <div style={{ marginTop: "12px" }}>
+              <button
+                className="confirm-btn"
+                style={{
+                  backgroundColor: "green",
+                  color: "#fff",
+                  marginRight: "8px",
+                }}
+                onClick={handleDeleteConfirmed}
+              >
+                ✅ ลบ
+              </button>
+              <button
+                className="cancel-btn"
+                style={{ backgroundColor: "red", color: "#fff" }}
+                onClick={() => setConfirmDelete(null)}
+              >
+                ❌ ยกเลิก
+              </button>
+            </div>
+          </div>
+        </div>
       )}
 
       {orderSuccess && (

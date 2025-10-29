@@ -1,11 +1,28 @@
 .admin-layout {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* เปลี่ยนจาก column เป็น row */
   min-height: 100vh;
   background: #fafafa;
   font-family: "Prompt", sans-serif;
 }
 
+/* Sidebar ด้านซ้าย */
+.admin-navbar {
+  width: 220px;
+  height: 100vh;
+  background: #222;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* เนื้อหาหลักด้านขวา */
 .admin-content {
-  padding: 20px;
+  margin-left: 220px; /* เว้นช่องให้ sidebar */
+  padding: 30px;
+  flex: 1;
 }

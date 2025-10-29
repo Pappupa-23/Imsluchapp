@@ -2,15 +2,27 @@
   background: #222;
   color: #fff;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 30px;
+  flex-direction: column; /* เปลี่ยนเป็นแนวตั้ง */
+  align-items: flex-start;
+  padding: 30px 20px;
+  height: 100vh; /* ยืดความสูงเต็มหน้าจอ */
+  width: 220px; /* กำหนดความกว้างของ sidebar */
+  position: fixed; /* ให้ติดอยู่ด้านซ้าย */
+  top: 0;
+  left: 0;
+}
+
+.admin-navbar h2 {
+  margin-bottom: 30px;
 }
 
 .admin-navbar ul {
   list-style: none;
   display: flex;
-  gap: 20px;
+  flex-direction: column; /* เรียงรายการแนวตั้ง */
+  gap: 15px;
+  padding: 0;
+  margin: 0;
 }
 
 .admin-navbar a {
@@ -20,4 +32,8 @@
 
 .admin-navbar a:hover {
   text-decoration: underline;
+}
+
+.admin-navbar h2{
+  color: #fff;
 }

@@ -15,36 +15,16 @@
   margin-bottom: 10px;
 }
 
-.cart-info {
-  display: flex;
-  justify-content: space-between; /* ✅ ปุ่มลบไปอยู่ขวาสุด */
-  align-items: flex-start;
-  gap: 10px;
-}
-
-.cart-info > div {
-  flex: 1;
-}
-
-.remove-btn {
-  background: #ff4d4f;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  cursor: pointer;
-  height: fit-content;
-  align-self: flex-start; /* ✅ ให้ชิดบนของรายการ */
-}
-
-.remove-btn:hover {
-  background: #d9363e;
-}
-
 .addons-detail p {
   font-size: 14px;
   color: #444;
   margin: 2px 0;
+}
+
+.quantity-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .quantity-controls {
@@ -67,6 +47,51 @@
 .quantity-controls button:last-child {
   background: #b6ff5c;
   color: #000;
+}
+
+/* ✅ ปุ่มลบ = สีเขียวอ่อน (เหมือนปุ่ม +) */
+.remove-btn {
+  background: #b6ff5c;
+  color: #000;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.remove-btn:hover {
+  background: #a0e650;
+}
+
+/* ✅ ปุ่มยืนยัน (ลบจริง) สีเขียวเข้ม */
+.confirm-btn {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.confirm-btn:hover {
+  background: #3d8b40;
+}
+
+/* ✅ ปุ่มยกเลิก = สีแดง (เหมือนปุ่ม -) */
+.cancel-btn {
+  background: #ff7575;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #e05f5f;
 }
 
 .cart-summary {
@@ -115,30 +140,4 @@
   border-radius: 8px;
   padding: 8px 16px;
   cursor: pointer;
-}
-/* ✅ เพิ่มโค้ดนี้ต่อท้ายไฟล์ของคุณ */
-.quantity-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.quantity-controls {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.remove-btn {
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 5px 12px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.remove-btn:hover {
-  background-color: #d93636;
 }
