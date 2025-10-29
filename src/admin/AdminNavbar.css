@@ -2,38 +2,138 @@
   background: #222;
   color: #fff;
   display: flex;
-  flex-direction: column; /* เปลี่ยนเป็นแนวตั้ง */
+  flex-direction: column;
   align-items: flex-start;
   padding: 30px 20px;
-  height: 100vh; /* ยืดความสูงเต็มหน้าจอ */
-  width: 220px; /* กำหนดความกว้างของ sidebar */
-  position: fixed; /* ให้ติดอยู่ด้านซ้าย */
+  height: 100vh;
+  width: 220px;
+  position: fixed;
   top: 0;
   left: 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  font-family: "Prompt", sans-serif;
 }
 
 .admin-navbar h2 {
   margin-bottom: 30px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
 }
 
 .admin-navbar ul {
   list-style: none;
   display: flex;
-  flex-direction: column; /* เรียงรายการแนวตั้ง */
-  gap: 15px;
+  flex-direction: column;
+  gap: 12px;
   padding: 0;
   margin: 0;
+  width: 100%;
 }
 
+/* 🔹 ลิงก์ทั่วไป */
 .admin-navbar a {
   color: #fff;
   text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  display: block;
+  font-weight: 500;
+  border: 2px solid transparent;
 }
 
+/* 🔹 Hover effect */
 .admin-navbar a:hover {
-  text-decoration: underline;
+  background: rgba(255, 255, 255, 0.15);
 }
 
-.admin-navbar h2{
-  color: #fff;
+/* 🔹 Active (หน้าปัจจุบัน) */
+.admin-navbar a.active {
+  background: #fff;
+  color: #000;
+  border: 2px solid #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(255,255,255,0.3);
+  transform: translateX(5px);
+  transition: all 0.25s ease;
+}
+
+.logout-btn {
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #e04848;
+}
+
+/* Popup overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Popup box */
+.popup-box {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.popup-box h3 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.popup-buttons .confirm {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.popup-buttons .cancel {
+  background-color: #000000;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.popup-buttons .confirm:hover {
+  background-color: #fb1010;
+}
+
+.popup-buttons .cancel:hover {
+  background-color: #b3b3b3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
 }

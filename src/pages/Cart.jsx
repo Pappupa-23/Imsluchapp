@@ -159,7 +159,7 @@ function Cart({ cartItems, updateQty, removeItem, clearCart }) {
               <button
                 className="confirm-btn"
                 style={{
-                  backgroundColor: "green",
+                  backgroundColor: "#4caf50",
                   color: "#fff",
                   marginRight: "8px",
                 }}

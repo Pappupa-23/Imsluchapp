@@ -28,9 +28,9 @@ h1 {
   cursor: pointer;
   font-weight: 500;
   transition: 0.2s;
-  opacity: 1;               /* ✅ ให้ข้อความมองเห็นตลอด */
-  color: #333;              /* ✅ สีข้อความชัด */
-  visibility: visible;      /* ✅ บังคับให้แสดงผล */
+  opacity: 1;
+  color: #333;
+  visibility: visible;
 }
 
 .tab-btn.active {
@@ -39,7 +39,6 @@ h1 {
   border-color: #000;
 }
 
-/* ถ้าไม่อยากให้มีเอฟเฟกต์ hover ให้ลบบล็อกนี้ได้ */
 .tab-btn:hover {
   opacity: 0.9;
 }
@@ -53,14 +52,40 @@ h1 {
 .order-card {
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   padding: 15px;
 }
 
 .order-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-weight: bold;
+}
+
+.order-status {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 🔵 ฟ้า = กำลังทำ */
+.order-status.processing {
+  background-color: #e7f0ff;
+  color: #0066d1;
+}
+
+/* 🟢 เขียว = พร้อมเสิร์ฟ */
+.order-status.ready {
+  background-color: #e7f9ee;
+  color: #1e7e34;
+}
+
+/* ⚫ เทา = เสิร์ฟแล้ว */
+.order-status.served {
+  background-color: #f0f0f0;
+  color: #555;
 }
 
 .order-time {
@@ -86,6 +111,7 @@ h1 {
   font-size: 13px;
 }
 
+/* 🖤 ปุ่มหลักสีดำ */
 .black-btn {
   width: 100%;
   background: #000;
@@ -98,7 +124,6 @@ h1 {
   cursor: pointer;
   transition: 0.2s;
 }
-
 .black-btn:hover {
   opacity: 0.85;
 }

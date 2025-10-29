@@ -3,27 +3,41 @@ import "./settings.css";
 
 export default function AdminSettings() {
   const [showConfirm, setShowConfirm] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [notifyNewOrder, setNotifyNewOrder] = useState(true);
-  const [notifyDelay, setNotifyDelay] = useState(false);
-  const [currentDate, setCurrentDate] = useState("");
+  const [notifyDelay, setNotifyDelay] = useState(true);
+  const [currentDateTime, setCurrentDateTime] = useState("");
 
   useEffect(() => {
-    const now = new Date();
-    const thaiMonths = [
-      "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
-      "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
-      "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
-    ];
-    const dateStr = `${now.getDate()} ${thaiMonths[now.getMonth()]} ${now.getFullYear() + 543}`;
-    setCurrentDate(dateStr);
+    const updateDateTime = () => {
+      const now = new Date();
+      const thaiMonths = [
+        "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+        "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+        "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+      ];
+      const date = `${now.getDate()} ${thaiMonths[now.getMonth()]} ${now.getFullYear() + 543}`;
+      const time = now.toLocaleTimeString("th-TH", {
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      setCurrentDateTime(`${date}, ${time} น.`);
+    };
+    updateDateTime();
+    const timer = setInterval(updateDateTime, 60000);
+    return () => clearInterval(timer);
   }, []);
 
   const handleEndDay = () => setShowConfirm(true);
   const closePopup = () => setShowConfirm(false);
 
   const confirmEndDay = () => {
-    alert("ดำเนินการจบวันเรียบร้อยแล้ว ✅");
     setShowConfirm(false);
+    setTimeout(() => setShowSuccess(true), 300); // แสดง popup success หลังปิด confirm
+  };
+
+  const closeSuccess = () => {
+    setShowSuccess(false);
   };
 
   return (
@@ -34,7 +48,7 @@ export default function AdminSettings() {
       <div className="section">
         <h2>จัดการวัน</h2>
         <p className="label">วันที่ปัจจุบัน</p>
-        <p className="current-date">{currentDate}</p>
+        <p className="current-date">{currentDateTime}</p>
         <p className="desc">
           การจบวันจะย้ายออเดอร์ที่เสร็จสิ้นทั้งหมดไปยังประวัติและล้างระบบเพื่อเริ่มวันใหม่
         </p>
@@ -77,20 +91,14 @@ export default function AdminSettings() {
         </p>
       </div>
 
-      <div className="section">
-        <h2>การกระทำ</h2>
-        <button className="gray-btn">ล้างประวัติออเดอร์</button>
-        <button className="gray-btn">รีเซ็ตการตั้งค่า</button>
-        <button className="logout-btn">ออกจากระบบ</button>
-      </div>
-
+      {/* Popup ยืนยัน */}
       {showConfirm && (
         <div className="popup-overlay">
           <div className="popup">
             <h3>ยืนยันการจบวัน?</h3>
             <p>
-              การดำเนินการนี้จะบันทึกออเดอร์ที่เสร็จสิ้นทั้งหมดในประวัติ
-              ล้างออเดอร์ปัจจุบัน และรีเซ็ตหมายเลขออเดอร์เป็น #1 สำหรับวันใหม่
+              การดำเนินการนี้จะบันทึกออเดอร์ที่เสร็จสิ้นทั้งหมดในประวัติ<br />
+              ล้างออเดอร์ปัจจุบัน และรีเซ็ตหมายเลขออเดอร์เป็น #1 <br />สำหรับวันใหม่
             </p>
             <div className="popup-actions">
               <button className="cancel-btn" onClick={closePopup}>
@@ -103,6 +111,22 @@ export default function AdminSettings() {
           </div>
         </div>
       )}
+
+      {/* Popup สำเร็จ */}
+     {showSuccess && (
+  <div className="popup-overlay">
+    <div className="popup success">
+      <svg className="checkmark" viewBox="0 0 52 52">
+        <path className="checkmark-check" d="M14 27l7 7 17-17" />
+      </svg>
+      <h3>จบวันเรียบร้อยแล้ว </h3>
+      <button className="confirm-btn" onClick={closeSuccess}>
+        เสร็จสิ้น
+      </button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }

@@ -195,18 +195,53 @@ input:checked + .slider:before {
 }
 
 .cancel-btn {
-  background: #f3f3f3;
+  background: #000000;
 }
 
 .cancel-btn:hover {
-  background: #e3e3e3;
+  background: #9c9c9c;
 }
 
 .confirm-btn {
-  background: #000;
+  background: #cc4545;
   color: white;
 }
 
 .confirm-btn:hover {
   opacity: 0.85;
 }
+
+/* ✅ Success check animation (เฉพาะติ๊ก ไม่มีวงกลม) */
+.checkmark {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  position: relative;
+}
+
+.checkmark-check {
+  width: 100px;
+  height: 100px;
+  stroke: #28a745; /* สีเขียวสด */
+  stroke-width: 8; /* หนา */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: drawCheck 0.6s ease forwards;
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* เพิ่มเอฟเฟกต์เด้งเล็กน้อยตอนติ๊กเสร็จ */
+@keyframes pop {
+  0% { transform: scale(0.9); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+

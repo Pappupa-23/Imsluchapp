@@ -12,7 +12,6 @@ import Cart from "./pages/Cart";
 
 import AdminNavbar from "./admin/AdminNavbar"; // ✅ navbar ฝั่ง admin
 import AdminLayout from "./admin/AdminLayout";
-import AdminDashboard from "./admin/dashboard";
 import AdminOrders from "./admin/orders";
 import AdminTables from "./admin/tables";
 import AdminHistory from "./admin/history";
@@ -59,35 +58,35 @@ function App() {
 
 
       <div style={{ minHeight: "calc(100vh - 160px)" }}>
-        <Routes>
-          {/* ✅ เส้นทางฝั่งลูกค้า */}
-          <Route path="/" element={<Home addToCart={addToCart} />} />
-          <Route path="/menu/food" element={<FoodMenu addToCart={addToCart} />} />
-          <Route path="/menu/fastfood" element={<FastFoodMenu addToCart={addToCart} />} />
-          <Route path="/menu/drink" element={<DrinkMenu addToCart={addToCart} />} />
-          <Route
-            path="/cart"
-            element={
-              <Cart
-                cartItems={cartItems}
-                updateQty={updateQty}
-                removeItem={removeItem}
-                clearCart={clearCart}
-              />
-            }
-          />
+  <Routes>
+    {/* ✅ เส้นทางฝั่งลูกค้า */}
+    <Route path="/" element={<Home addToCart={addToCart} />} />
+    <Route path="/menu/food" element={<FoodMenu addToCart={addToCart} />} />
+    <Route path="/menu/fastfood" element={<FastFoodMenu addToCart={addToCart} />} />
+    <Route path="/menu/drink" element={<DrinkMenu addToCart={addToCart} />} />
+    <Route
+      path="/cart"
+      element={
+        <Cart
+          cartItems={cartItems}
+          updateQty={updateQty}
+          removeItem={removeItem}
+          clearCart={clearCart}
+        />
+      }
+    />
 
-          {/* ✅ เส้นทางฝั่ง admin */}
-<Route path="/admin" element={<AdminLayout />}>
-  <Route index element={<AdminDashboard />} /> {/* /admin */}
-  <Route path="dashboard" element={<AdminDashboard />} />
+    <Route path="/admin" element={<AdminLayout />}>
+  <Route index element={<AdminOrders />} /> {/* ✅ ชื่อเดียวกับ import */}
   <Route path="orders" element={<AdminOrders />} />
   <Route path="tables" element={<AdminTables />} />
   <Route path="history" element={<AdminHistory />} />
   <Route path="settings" element={<AdminSettings />} />
 </Route>
-</Routes> {/* 👈 อย่าลืมปิด */}
-      </div>
+
+  </Routes>
+</div>
+
 
       {/* ✅ ฝั่ง admin ไม่ต้องมี Footer */}
       {!isAdminPage && <Footer />}

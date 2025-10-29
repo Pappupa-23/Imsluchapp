@@ -51,7 +51,6 @@ export default function AdminOrders() {
   ]);
 
   const [filter, setFilter] = useState("ทั้งหมด");
-
   const tabs = ["ทั้งหมด", "รอทำ", "กำลังทำ", "พร้อมเสิร์ฟ", "เสิร์ฟแล้ว"];
 
   const filteredOrders =
@@ -78,6 +77,13 @@ export default function AdminOrders() {
         })
         .filter(Boolean)
     );
+  };
+
+  const getStatusClass = (status) => {
+    if (status === "กำลังทำ") return "processing";
+    if (status === "พร้อมเสิร์ฟ") return "ready";
+    if (status === "เสิร์ฟแล้ว") return "served";
+    return "";
   };
 
   return (
@@ -110,7 +116,9 @@ export default function AdminOrders() {
               <div className="order-header">
                 <div>#{order.id}</div>
                 <div>โต๊ะ {order.table}</div>
-                <div className="status">{order.status}</div>
+                <div className={`order-status ${getStatusClass(order.status)}`}>
+                  {order.status}
+                </div>
               </div>
 
               <div className="order-time">
