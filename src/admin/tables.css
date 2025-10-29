@@ -1,0 +1,146 @@
+.tables-container {
+  padding: 30px;
+  background-color: #fafafa;
+  color: #333;
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #000;
+}
+
+.table-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.table-card {
+  flex: 1 1 160px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  transition: 0.2s;
+}
+
+.table-card h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.table-card p {
+  margin-top: 5px;
+  color: #555;
+}
+
+.table-card.ordered {
+  border: 2px solid #000;
+  cursor: pointer;
+}
+
+.table-card.ordered:hover {
+  background: #f0f0f0;
+}
+
+.table-card.empty {
+  border: 1px solid #ccc;
+  color: #888;
+}
+
+.table-detail {
+  animation: fadeIn 0.3s ease-in;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 15px;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.order-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 15px;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.order-time {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #777;
+}
+
+.order-total {
+  font-weight: bold;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.order-items {
+  margin-top: 10px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+  font-size: 15px;
+}
+
+.note {
+  display: block;
+  color: #999;
+  font-size: 13px;
+}
+
+.black-btn {
+  width: 100%;
+  background: #000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.black-btn:hover {
+  opacity: 0.85;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
