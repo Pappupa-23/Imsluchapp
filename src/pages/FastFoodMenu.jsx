@@ -136,9 +136,9 @@ function FastFoodMenu({ addToCart }) {
               <div className="addon-group">
                 <h4>ตัวเลือกเพิ่มเติม</h4>
                 {[
-                  { name: "ปกติ", price: 0 },
-                  { name: "ไม่เอาสัปปะรด", price: 0 },
-                  { name: "ไม่เอาแฮม", price: 0 },
+                  { name: " ปกติ", price: 0 },
+                  { name: " ไม่เอาสัปปะรด", price: 0 },
+                  { name: " ไม่เอาแฮม", price: 0 },
                 ].map((opt) => (
                   <label key={opt.name}>
                     <input

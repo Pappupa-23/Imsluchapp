@@ -77,7 +77,7 @@ function DrinkMenu({ addToCart }) {
                     checked={cold === "เย็น"}
                     onChange={(e) => setCold(e.target.value)}
                   />
-                  เย็น
+                  {" "}เย็น
                 </label>
                 <label>
                   <input
@@ -87,7 +87,7 @@ function DrinkMenu({ addToCart }) {
                     checked={cold === "ไม่เย็น"}
                     onChange={(e) => setCold(e.target.value)}
                   />
-                  ไม่เย็น
+                  {" "}ไม่เย็น
                 </label>
               </div>
             ) : selectedDrink.name !== "โคล่า" ? (
@@ -101,7 +101,7 @@ function DrinkMenu({ addToCart }) {
                     checked={sweetness === "หวานน้อย"}
                     onChange={(e) => setSweetness(e.target.value)}
                   />
-                  หวานน้อย
+                  {" "}หวานน้อย
                 </label>
                 <label>
                   <input
@@ -111,7 +111,7 @@ function DrinkMenu({ addToCart }) {
                     checked={sweetness === "หวานปกติ"}
                     onChange={(e) => setSweetness(e.target.value)}
                   />
-                  หวานปกติ
+                  {" "}หวานปกติ
                 </label>
                 <label>
                   <input
@@ -121,7 +121,7 @@ function DrinkMenu({ addToCart }) {
                     checked={sweetness === "หวานมาก"}
                     onChange={(e) => setSweetness(e.target.value)}
                   />
-                  หวานมาก
+                  {" "}หวานมาก
                 </label>
               </div>
             ) : null}
