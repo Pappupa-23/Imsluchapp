@@ -3,6 +3,7 @@ import CartIcon from "./CartIcon";
 import SplitText from "./SplitText";
 import "./Navbar.css";
 
+
 export default function Navbar({ cartCount = 0 }) {
   return (
     <header className="nb">

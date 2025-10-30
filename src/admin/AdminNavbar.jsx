@@ -41,11 +41,11 @@ export default function AdminNavbar() {
               ประวัติออเดอร์
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/admin/settings" className={({ isActive }) => (isActive ? "active" : "")}>
               การตั้งค่า
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <button className="logout-btn" onClick={handleLogout}>ออกจากระบบ</button>
           </li>

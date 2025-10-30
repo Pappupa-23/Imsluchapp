@@ -12,20 +12,19 @@ import FastFoodMenu from "./pages/FastFoodMenu";
 import DrinkMenu from "./pages/DrinkMenu";
 import Cart from "./pages/Cart";
 
-// admin imports...
+// admin imports
 import AdminLayout from "./admin/AdminLayout";
 import AdminOrders from "./admin/orders";
 import AdminTables from "./admin/tables";
 import AdminHistory from "./admin/history";
 import AdminSettings from "./admin/settings";
 
-// staff imports (ตรวจให้แน่ใจไฟล์มีชื่อตรงนี้)
+// staff imports
 import StaffLayout from "./staff/StaffLayout";
 import StaffDashboard from "./staff/dashboard";
 import StaffTables from "./staff/tables";
 
 import Login from "./pages/Login";
-
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -33,6 +32,7 @@ function App() {
 
   const isAdminPage = location.pathname.startsWith("/admin");
   const isStaffPage = location.pathname.startsWith("/staff");
+  const isLoginPage = location.pathname === "/login"; // 👈 เพิ่มตรงนี้
 
   const addToCart = (item) => {
     const newItem = { ...item, id: Date.now() + Math.random(), qty: 1 };
@@ -47,13 +47,18 @@ function App() {
     );
   };
 
-  const removeItem = (id) => setCartItems((prev) => prev.filter((i) => i.id !== id));
+  const removeItem = (id) =>
+    setCartItems((prev) => prev.filter((i) => i.id !== id));
+
   const clearCart = () => setCartItems([]);
   const cartCount = cartItems.reduce((s, i) => s + (i.qty || 1), 0);
 
   return (
     <>
-      {!isAdminPage && !isStaffPage && <Navbar cartCount={cartCount} />}
+      {/* ซ่อน Navbar เมื่ออยู่หน้า admin, staff, หรือ login */}
+      {!isAdminPage && !isStaffPage && !isLoginPage && (
+        <Navbar cartCount={cartCount} />
+      )}
 
       <div style={{ minHeight: "calc(100vh - 160px)" }}>
         <Routes>
@@ -85,18 +90,18 @@ function App() {
 
           {/* staff */}
           <Route path="/staff" element={<StaffLayout />}>
-            {/* index will render StaffDashboard when /staff */}
             <Route index element={<StaffDashboard />} />
             <Route path="dashboard" element={<StaffDashboard />} />
             <Route path="tables" element={<StaffTables />} />
           </Route>
 
+          {/* login */}
           <Route path="/login" element={<Login />} />
-
         </Routes>
       </div>
 
-      {!isAdminPage && !isStaffPage && <Footer />}
+      {/* ซ่อน Footer เมื่ออยู่หน้า admin, staff, หรือ login */}
+      {!isAdminPage && !isStaffPage && !isLoginPage && <Footer />}
     </>
   );
 }
