@@ -1,0 +1,65 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: #f6f7f9;
+  font-family: "Prompt", sans-serif;
+  padding-top: 80px; /* เพิ่มระยะจากด้านบน */
+}
+
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 320px;
+  text-align: center;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-box button:hover {
+  background: #333;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.login-box h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 20px; /* ขนาดหลักของข้อความไทย */
+  line-height: 1.4;
+}
+
+.login-box h2 span {
+  display: block;
+  font-size: 14px; /* ขนาดเล็กกว่าหน่อยสำหรับภาษาอังกฤษ */
+  color: #666; /* สีเทาอ่อนลงเพื่อความสมดุล */
+  margin-top: 4px;
+}

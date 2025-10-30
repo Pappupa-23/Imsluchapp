@@ -11,9 +11,11 @@ export default function AdminNavbar() {
   };
 
   const confirmLogout = () => {
-    setShowPopup(false);
-    navigate("/"); // กลับไปหน้า Home.jsx
-  };
+  setShowPopup(false);
+  localStorage.removeItem("role"); // ล้าง role ก่อน
+  navigate("/login"); // ไปหน้า login
+};
+
 
   const cancelLogout = () => {
     setShowPopup(false);
@@ -26,26 +28,26 @@ export default function AdminNavbar() {
         <ul>
           <li>
             <NavLink to="/admin/orders" className={({ isActive }) => (isActive ? "active" : "")}>
-              Orders
+              ออเดอร์ทั้งหมด
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/tables" className={({ isActive }) => (isActive ? "active" : "")}>
-              Tables
+              โต๊ะทั้งหมด
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/history" className={({ isActive }) => (isActive ? "active" : "")}>
-              History
+              ประวัติออเดอร์
             </NavLink>
           </li>
           <li>
             <NavLink to="/admin/settings" className={({ isActive }) => (isActive ? "active" : "")}>
-              Settings
+              การตั้งค่า
             </NavLink>
           </li>
           <li>
-            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            <button className="logout-btn" onClick={handleLogout}>ออกจากระบบ</button>
           </li>
         </ul>
       </nav>

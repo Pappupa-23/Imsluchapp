@@ -1,0 +1,64 @@
+/* 🔹 โครงสร้างหลักของหน้า Staff */
+.staff-layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  background: #f7f7f7;
+  font-family: "Prompt", sans-serif;
+}
+
+/* 🔹 Sidebar ด้านซ้าย */
+.staff-navbar {
+  width: 220px;
+  height: 100vh;
+  background: #2c2c2c;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+}
+
+/* 🔹 เนื้อหาหลักด้านขวา */
+.staff-content {
+  margin-left: 220px; /* ระยะเท่ากับ sidebar */
+  padding: 30px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* 🔹 ปรับสกรีนเล็ก (เช่นแท็บเล็ตหรือมือถือแนวนอน) */
+@media (max-width: 900px) {
+  .staff-navbar {
+    width: 180px;
+  }
+
+  .staff-content {
+    margin-left: 180px;
+  }
+}
+
+/* 🔹 หน้าจอมือถือ (เล็กมาก) */
+@media (max-width: 600px) {
+  .staff-layout {
+    flex-direction: column;
+  }
+
+  .staff-navbar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  .staff-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+}

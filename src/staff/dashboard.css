@@ -279,16 +279,3 @@
   font-weight: normal; /* เอาความหนาออก */
   font-size: 1.2em; /* ขยายขนาดขึ้นเล็กน้อย */
 }
-
-.item-note {
-  margin-top: 4px;
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.4;
-}
-
-.item-note strong {
-  color: #ff0000;
-  display: block;
-  margin-bottom: 2px;
-}

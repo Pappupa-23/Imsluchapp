@@ -98,7 +98,7 @@ export default function AdminSettings() {
             <h3>ยืนยันการจบวัน?</h3>
             <p>
               การดำเนินการนี้จะบันทึกออเดอร์ที่เสร็จสิ้นทั้งหมดในประวัติ<br />
-              ล้างออเดอร์ปัจจุบัน และรีเซ็ตหมายเลขออเดอร์เป็น #1 <br />สำหรับวันใหม่
+              ล้างออเดอร์ปัจจุบัน และรีเซ็ตหมายเลขออเดอร์เป็น OD-001 <br />สำหรับวันใหม่
             </p>
             <div className="popup-actions">
               <button className="cancel-btn" onClick={closePopup}>

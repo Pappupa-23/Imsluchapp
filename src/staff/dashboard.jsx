@@ -1,9 +1,16 @@
 import React, { useState } from "react";
-import "./orders.css";
-import { FaClock, FaUtensils, FaCheckCircle, FaListAlt } from "react-icons/fa";
+import "./dashboard.css";
+import {
+  FaClock,
+  FaUtensils,
+  FaCheckCircle,
+  FaListAlt,
+} from "react-icons/fa";
+
 import { FaBoxArchive } from "react-icons/fa6"; // ✅ เพิ่มจาก fa6
 
-export default function AdminOrders() {
+
+export default function StaffDashboard() {
   const [orders, setOrders] = useState([
     {
       id: "OD-002",
@@ -22,10 +29,10 @@ export default function AdminOrders() {
       table: 1,
       status: "กำลังทำ",
       time: "56 นาทีที่แล้ว",
-      total: 95,
+      total: 150,
       items: [
-        { name: "ข้าวผัดกะเพราหมู", price: 45, qty: 1, note: "ไม่เผ็ด" },
-        { name: "โคล่า", price: 25, qty: 2 },
+        { name: "ผัดไทย", price: 50, qty: 2, note: "ไม่เผ็ด" },
+        { name: "น้ำมะนาว", price: 25, qty: 2 },
       ],
     },
     {
@@ -44,26 +51,10 @@ export default function AdminOrders() {
       table: 2,
       status: "พร้อมเสิร์ฟ",
       time: "58 นาทีที่แล้ว",
-      total: 155,
+      total: 145,
       items: [
-        {
-          name: "เบอร์เกอร์หมู",
-          price: 85,
-          qty: 1,
-          note: "ท็อปปิ้ง=เบคอน+25฿,ผัก=ปกติ,ซอส=ซอสปกติ(มะเขือเทศ+พริก+มายองเนศ)",
-        },
-        { name: "พีชสเลอปี้", price: 45, qty: 1 },
-      ],
-    },
-    {
-      id: "OD-005",
-      table: 6,
-      status: "รอทำ",
-      time: "58 นาทีที่แล้ว",
-      total: 70,
-      items: [
-        { name: "ข้าวผัดกะเพราหมู", price: 45, qty: 1, note: "เผ็ดน้อย" },
-        { name: "ชาไทย", price: 25, qty: 1 },
+        { name: "แกงเขียวหวาน", price: 70, qty: 1, note: "เผ็ดน้อย" },
+        { name: "น้ำมะนาว", price: 25, qty: 3 },
       ],
     },
   ]);
@@ -155,6 +146,7 @@ export default function AdminOrders() {
                     <div className="order-header">
                       <div className="order-header-left">
                         <div className="order-id">{order.id}</div>
+
                         <div>โต๊ะ {order.table}</div>
                         <div className={`status ${order.status}`}>
                           {getIcon(order.status)} {order.status}
@@ -172,14 +164,7 @@ export default function AdminOrders() {
                             <span>
                               {item.qty}x {item.name}
                             </span>
-                            {item.note && (
-                              <div className="item-note">
-                                <strong>หมายเหตุ:</strong>
-                                {item.note.split(",").map((line, index) => (
-                                  <p key={index}>{line.trim()}</p>
-                                ))}
-                              </div>
-                            )}
+                            {item.note && <small>หมายเหตุ: {item.note}</small>}
                           </div>
                           <span className="price">฿{item.price}</span>
                         </div>

@@ -6,9 +6,9 @@ function Home({ setCartCount }) {
   const [promoIndex, setPromoIndex] = useState(0);
 
   const promos = [
-    { img: "/promo1.jpg", desc: "ซื้อ 1 แถม 1 สเลอปี้" },
+    { img: "/promo1.jpg", desc: "เวลาเปิด-ปิดของร้าน I'm Slush" },
     { img: "/promo2.jpg", desc: "แจ้งวันหยุดวันตรุษจีน" },
-    { img: "/promo3.jpg", desc: "โปรโมชั่นฟาสต์ฟู้ด" },
+    { img: "/promo3.jpg", desc: "รับทำของแจก" },
   ];
 
   const nextPromo = () => setPromoIndex((promoIndex + 1) % promos.length);

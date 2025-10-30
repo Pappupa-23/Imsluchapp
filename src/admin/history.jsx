@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./history.css";
 
 export default function AdminHistory() {
@@ -57,46 +57,41 @@ export default function AdminHistory() {
   };
 
   const dateList = Object.keys(data);
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  const todayISO = today.toISOString().split("T")[0];
 
-  // ✅ Helper แปลงวันไทย → timestamp (พร้อม setHours 0)
+  // ✅ สร้างวันที่วันนี้ (ISO string)
+  const getTodayISO = () => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    return today.toISOString().split("T")[0];
+  };
+
+  const [startDate, setStartDate] = useState("2025-10-27");
+  const [endDate, setEndDate] = useState(getTodayISO());
+
+  // ✅ ถ้าวันเปลี่ยน ให้ endDate เป็นวันใหม่โดยอัตโนมัติ
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setEndDate(getTodayISO());
+    }, 60 * 60 * 1000); // เช็กทุก 1 ชั่วโมง
+    return () => clearInterval(timer);
+  }, []);
+
   const parseThaiDate = (dateStr) => {
     const [day, monthName, year] = dateStr.split(" ");
     const months = [
-      "มกราคม",
-      "กุมภาพันธ์",
-      "มีนาคม",
-      "เมษายน",
-      "พฤษภาคม",
-      "มิถุนายน",
-      "กรกฎาคม",
-      "สิงหาคม",
-      "กันยายน",
-      "ตุลาคม",
-      "พฤศจิกายน",
-      "ธันวาคม",
+      "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+      "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม",
+      "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
     ];
-    const d = new Date(
-      parseInt(year) - 543,
-      months.indexOf(monthName),
-      parseInt(day)
-    );
+    const d = new Date(parseInt(year) - 543, months.indexOf(monthName), parseInt(day));
     d.setHours(0, 0, 0, 0);
     return d.getTime();
   };
 
-  // ✅ ตั้งค่าเริ่มต้น
-  const [startDate, setStartDate] = useState("2025-10-27");
-  const [endDate, setEndDate] = useState(todayISO);
-
-  // ✅ ตรวจสอบไม่ให้เลือกเกินวันนี้
   const handleStartChange = (e) => {
     const value = e.target.value;
     const d = new Date(value);
     d.setHours(0, 0, 0, 0);
-    if (d > today) return;
     if (d > new Date(endDate)) setEndDate(value);
     setStartDate(value);
   };
@@ -105,12 +100,10 @@ export default function AdminHistory() {
     const value = e.target.value;
     const d = new Date(value);
     d.setHours(0, 0, 0, 0);
-    if (d > today) return;
     if (d < new Date(startDate)) setStartDate(value);
     setEndDate(value);
   };
 
-  // ✅ กรองข้อมูล (แก้ timezone ให้ตรง)
   const filteredDates = dateList.filter((date) => {
     const dateTime = parseThaiDate(date);
     const startTime = new Date(startDate).setHours(0, 0, 0, 0);
@@ -118,7 +111,6 @@ export default function AdminHistory() {
     return dateTime >= startTime && dateTime <= endTime;
   });
 
-  // ✅ คำนวณจำนวนวัน (รวมวันเริ่มและสิ้นสุด)
   const calcTotalDays = (start, end) => {
     const startD = new Date(start);
     const endD = new Date(end);
@@ -128,7 +120,6 @@ export default function AdminHistory() {
     return diff >= 0 ? diff + 1 : 0;
   };
 
-  // ✅ สรุปผลรวม
   const rangeSummary = {
     totalDays: calcTotalDays(startDate, endDate),
     totalOrders: filteredDates.reduce(
@@ -146,7 +137,6 @@ export default function AdminHistory() {
       <h1>ประวัติออเดอร์</h1>
       <p className="subtitle">ออเดอร์ที่เสร็จสิ้นแล้วทั้งหมดแยกตามวัน</p>
 
-      {/* ตัวเลือกวันที่ */}
       <div className="date-range">
         <div>
           <label>วันที่เริ่มต้น</label>
@@ -154,7 +144,6 @@ export default function AdminHistory() {
             type="date"
             value={startDate}
             onChange={handleStartChange}
-            max={todayISO}
           />
         </div>
         <div>
@@ -163,12 +152,10 @@ export default function AdminHistory() {
             type="date"
             value={endDate}
             onChange={handleEndChange}
-            max={todayISO}
           />
         </div>
       </div>
 
-      {/* การ์ดสรุป */}
       <div className="summary-cards">
         <div className="card">
           <p>จำนวนวันที่บันทึก</p>
@@ -184,7 +171,6 @@ export default function AdminHistory() {
         </div>
       </div>
 
-      {/* แสดงข้อมูลออเดอร์ */}
       {filteredDates.length === 0 ? (
         <p className="no-data">ไม่มีข้อมูลในช่วงวันที่ที่เลือก</p>
       ) : (
@@ -195,7 +181,6 @@ export default function AdminHistory() {
               {data[date].summary.totalOrders} ออเดอร์ • ฿
               {data[date].summary.totalRevenue}
             </p>
-
             <div className="orders-list">
               {data[date].orders.map((order) => (
                 <div key={order.id} className="order-card">
@@ -209,9 +194,7 @@ export default function AdminHistory() {
                   <div className="order-items">
                     {order.items.map((item, i) => (
                       <div key={i} className="order-item">
-                        <span>
-                          {item.qty}x {item.name}
-                        </span>
+                        <span>{item.qty}x {item.name}</span>
                         <span>฿{item.price}</span>
                       </div>
                     ))}
