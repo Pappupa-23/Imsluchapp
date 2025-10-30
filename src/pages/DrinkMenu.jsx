@@ -3,12 +3,12 @@ import "./DrinkMenu.css";
 
 function DrinkMenu({ addToCart }) {
   const drinks = [
-    { name: "สตรอเบอร์รี่โยเกิร์ต", price: 39, image: "/สตรอเบอร์รี่โยเกิร์ต.jpg" },
+    { name: "สตรอว์เบอร์รีโยเกิร์ต", price: 39, image: "/สตรอเบอร์รี่โยเกิร์ต.jpg" },
     { name: "พีชสเลอปี้", price: 45, image: "/พีชสเลอปี้.jpg" },
-    { name: "นมฮอกไกโดเลอปี้", price: 45, image: "/นมฮอกไกโดเลอปี้.jpg" },
+    { name: "นมฮอกไกโดสเลอปี้", price: 45, image: "/นมฮอกไกโดเลอปี้.jpg" },
     { name: "ชาไทย", price: 45, image: "/ชาไทย.jpg" },
     { name: "ค็อกเทลสเลอปี้", price: 45, image: "/ค็อกเทลสเลอปี้.jpg" },
-    { name: "ชาเขียวเลอปี้", price: 45, image: "/ชาเขียวเลอปี้.jpg" },
+    { name: "ชาเขียวสเลอปี้", price: 45, image: "/ชาเขียวเลอปี้.jpg" },
     { name: "โคล่า", price: 25 ,image: "/โคล่า.jpg" },
     { name: "ชาไทยครีมชีส", price: 30 , image: "/ชาไทยครีมชีส.jpg" },
     { name: "น้ำเปล่า", price: 10 ,image: "/น้ำเปล่า.jpg" },

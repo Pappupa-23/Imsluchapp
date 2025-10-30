@@ -6,53 +6,125 @@ export default function AdminHistory() {
     "27 ตุลาคม 2568": {
       orders: [
         {
-          id: 1,
+          id: "OD-001",
           table: "โต๊ะ 1",
           status: "เสร็จสิ้น",
           time: "09:00",
-          total: 225,
+          total: 165,
           items: [
-            { name: "ข้าวมันไก่", price: 75, qty: 2 },
-            { name: "ชาเย็น", price: 25, qty: 3 },
-          ],
+        { name: "ข้าวไก่เทอริยากิ", price: 95, qty: 1 },
+        { name: "ไก่สติ๊ก", price: 60, qty: 1 },
+        { name: "น้ำเปล่า", price: 10, qty: 2 },
+      ],
         },
       ],
-      summary: { totalOrders: 1, totalRevenue: 225 },
+      summary: { totalOrders: 1, totalRevenue: 165 },
     },
     "28 ตุลาคม 2568": {
       orders: [
         {
-          id: 1,
+          id: "OD-001",
+          table: "โต๊ะ 1",
+          status: "เสร็จสิ้น",
+          time: "08:35",
+          total: 95,
+          items: [
+        { name: "ข้าวผัดกะเพราหมู", price: 45, qty: 1, note: "ไม่เผ็ด" },
+        { name: "โคล่า", price: 25, qty: 2 },
+      ],
+        },
+        {
+          id: "OD-002",
+          table: "โต๊ะ 2",
+          status: "เสร็จสิ้น",
+          time: "10:05",
+          total: 175,
+      items: [
+        { name: "ฮอทด็อกเบคอน", price: 85, qty: 1 },
+        { name: "นมฮอกไกโดสเลอปี้", price: 45, qty: 2 },
+      ],
+        },
+        {
+          id: "OD-003",
+          table: "โต๊ะ 3",
+          status: "เสร็จสิ้น",
+          time: "11:05",
+          total: 155,
+      items: [
+        {
+          name: "เบอร์เกอร์หมู",
+          price: 85,
+          qty: 1,
+          note: "ท็อปปิ้ง=เบคอน+25฿,ผัก=ปกติ,ซอส=ซอสปกติ(มะเขือเทศ+พริก+มายองเนศ)",
+        },
+        { name: "พีชสเลอปี้", price: 45, qty: 1 },
+      ],
+        },
+      ],
+      summary: { totalOrders: 3, totalRevenue: 510 },
+    },
+    "29 ตุลาคม 2568": {
+      orders: [
+        {
+          id: "OD-001",
+          table: "โต๊ะ 1",
+          status: "เสร็จสิ้น",
+          time: "08:35",
+          total: 50,
+      items: [
+        { name: "ข้าวผัดหมู", price: 50, qty: 1,  },
+      ],
+        },
+        {
+          id: "OD-002",
+          table: "โต๊ะ 2",
+          status: "เสร็จสิ้น",
+          time: "10:05",
+          total: 155,
+      items: [
+        { name: "พิซซ่าฮาวาเอี้ยน", price: 155, qty: 1, note: "ไม่เอาสัปปะรด" },
+      ],
+        },
+        {
+          id: "OD-003",
+          table: "โต๊ะ 3",
+          status: "เสร็จสิ้น",
+          time: "11:05",
+          total: 90,
+      items: [
+        { name: "ข้าวผัดกะเพราหมู", price: 45, qty: 1, },
+        { name: "ชาเขียวสเลอปี้", price: 45, qty: 1 },
+      ],
+        },
+      ],
+      summary: { totalOrders: 3, totalRevenue: 295 },
+    },
+    "30 ตุลาคม 2568": {
+      orders: [
+        {
+          id: "OD-001",
           table: "โต๊ะ 1",
           status: "เสร็จสิ้น",
           time: "08:35",
           total: 75,
-          items: [
-            { name: "ผัดไทย", price: 50, qty: 1 },
-            { name: "น้ำมะนาว", price: 25, qty: 1 },
-          ],
+      items: [
+        { name: "เฟรนซ์ฟรายชีส", price: 45, qty: 1, },
+      ],
         },
         {
-          id: 2,
+          id: "OD-002",
           table: "โต๊ะ 2",
           status: "เสร็จสิ้น",
           time: "10:05",
-          total: 120,
-          items: [{ name: "ต้มยำกุ้ง", price: 120, qty: 1 }],
-        },
-        {
-          id: 3,
-          table: "โต๊ะ 3",
-          status: "เสร็จสิ้น",
-          time: "11:05",
-          total: 150,
-          items: [
-            { name: "ข้าวผัด", price: 45, qty: 2 },
-            { name: "น้ำส้ม", price: 30, qty: 2 },
-          ],
-        },
+          total: 175,
+      items: [
+        { name: "ฮอทด็อกเบคอน", price: 85, qty: 1 },
+        { name: "นมฮอกไกโดสเลอปี้", price: 45, qty: 2 },
       ],
-      summary: { totalOrders: 3, totalRevenue: 345 },
+        },
+        
+      ],
+      summary: { totalOrders: 2, totalRevenue: 250 },
     },
   };
 
@@ -185,7 +257,7 @@ export default function AdminHistory() {
               {data[date].orders.map((order) => (
                 <div key={order.id} className="order-card">
                   <div className="order-header">
-                    <span>#{order.id}</span>
+                    <span>{order.id}</span>
                     <span>{order.table}</span>
                     <span className="status">{order.status}</span>
                     <span className="time">{order.time}</span>

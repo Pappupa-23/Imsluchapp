@@ -1,10 +1,14 @@
 :root {
   --nb-bg: #1f1f1f;
+
+  /* ไล่เฉดแดงเหมือนรูป */
   --red-l: #ffd6d6;
   --red-m: #ff3e3e;
   --red-r: #ff7e7e;
-  --tab-green: #b7ff3a;
-  --tab-blue: #59c2ff;
+
+  /* สีปุ่มเมนู */
+  --tab-green: #b7ff3a; /* ค่าเริ่มต้น */
+  --tab-blue: #59c2ff; /* ชี้/อยู่หน้านั้น */
   --tab-text: #111;
 }
 
@@ -25,6 +29,7 @@
   border-top: 3px solid #111;
   border-bottom: 3px solid #111;
   margin: 0;
+  box-shadow: none !important;
 }
 
 .nb-topbar .container {
@@ -97,12 +102,13 @@
   padding: 2px 6px;
 }
 
-/* ===== แถบเมนู ===== */
+/* ===== แถบเมนู (ส่วนล่าง) ===== */
 .nb-tabs {
   background: #fff;
   padding: 0;
   margin: 0;
-  border: none;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .nb-tabs .container {
@@ -110,20 +116,19 @@
   padding: 0;
 }
 
-/* ปุ่มเมนู */
+/* ปุ่มเมนู 4 ปุ่ม */
 .tabs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 0;
   padding: 0;
-  margin: 0;
 }
 
 .nb .nb-tab {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 56px; /* กำหนดความสูงให้เส้นเต็ม */
+  display: block;
+  text-align: center;
+  padding: 12px 0;
   background: var(--tab-green);
   color: var(--tab-text);
   font-weight: 700;
@@ -132,37 +137,31 @@
   border-top: 2px solid #111;
   border-bottom: 2px solid #111;
   transition: background 0.2s ease;
+  user-select: none;
 }
 
-/* ✅ เส้นคั่นกลางเต็มช่อง และหนาเท่ากัน */
-.nb .nb-tab::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background: #111;
-}
-
+/* 🔧 เส้นคั่นกลางระหว่างเมนู: เต็มพอดี + ขนาดเท่ากัน */
 .nb .nb-tab::after {
   content: "";
   position: absolute;
-  right: 0;
   top: 0;
+  right: 0;
   width: 2px;
   height: 100%;
   background: #111;
 }
 
-/* ปุ่มแรกไม่ต้องมีขอบซ้ายซ้ำ */
-.tabs-grid .nb-tab:first-child::before {
+/* ปุ่มสุดท้ายไม่ต้องมีเส้นคั่น */
+.tabs-grid .nb-tab:last-child::after {
   display: none;
 }
 
-/* ปุ่มสุดท้ายไม่ต้องมีขอบขวาซ้ำ */
-.tabs-grid .nb-tab:last-child::after {
-  display: none;
+/* 🔧 ขอบซ้ายขวาเท่ากันทุกช่อง */
+.tabs-grid .nb-tab:first-child {
+  border-left: 2px solid #111;
+}
+.tabs-grid .nb-tab:last-child {
+  border-right: 2px solid #111;
 }
 
 /* Hover / Active */
@@ -170,6 +169,16 @@
 .nb .nb-tab.is-current {
   background: var(--tab-blue);
   color: #111;
+}
+
+/* รองรับตัวอักษรที่ถูกแยก */
+.split-parent {
+  contain: layout paint;
+}
+.split-char,
+.split-word {
+  display: inline-block;
+  will-change: transform, opacity;
 }
 
 /* ===== Responsive ===== */
@@ -191,22 +200,25 @@
   .brand-center {
     font-size: 18px;
     padding: 2px 8px;
+    border-width: 2px;
   }
   .left-logo {
     width: 46px;
     height: 46px;
+    border-width: 2px;
   }
   .cart-btn {
     width: 40px;
     height: 40px;
+    border-width: 2px;
   }
   .nb .nb-tab {
+    padding: 10px 0;
     font-size: 14px;
-    height: 48px;
   }
 }
 
-/* บังคับแนวนอนเสมอ */
+/* Fix: ให้คงเป็น 4 ปุ่มแนวนอนเสมอ */
 .tabs-grid {
-  grid-template-columns: repeat(4, 1fr) !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
 }

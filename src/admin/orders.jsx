@@ -10,11 +10,11 @@ export default function AdminOrders() {
       table: 3,
       status: "รอทำ",
       time: "5 นาทีที่แล้ว",
-      total: 205,
+      total: 175,
       items: [
-        { name: "ต้มยำกุ้ง", price: 120, qty: 1 },
-        { name: "ส้มตำ", price: 40, qty: 1 },
-        { name: "ข้าวผัด", price: 45, qty: 1 },
+        { name: "ข้าวไก่เทอริยากิ", price: 95, qty: 1 },
+        { name: "ไก่สติ๊ก", price: 60, qty: 1 },
+        { name: "น้ำเปล่า", price: 10, qty: 2 },
       ],
     },
     {
@@ -33,10 +33,10 @@ export default function AdminOrders() {
       table: 5,
       status: "พร้อมเสิร์ฟ",
       time: "68 นาทีที่แล้ว",
-      total: 140,
+      total: 175,
       items: [
-        { name: "ไก่ทอด", price: 80, qty: 1 },
-        { name: "น้ำส้ม", price: 30, qty: 2 },
+        { name: "ฮอทด็อกเบคอน", price: 85, qty: 1 },
+        { name: "นมฮอกไกโดสเลอปี้", price: 45, qty: 2 },
       ],
     },
     {
@@ -57,13 +57,64 @@ export default function AdminOrders() {
     },
     {
       id: "OD-005",
-      table: 6,
+      table: 4,
       status: "รอทำ",
       time: "58 นาทีที่แล้ว",
       total: 70,
       items: [
         { name: "ข้าวผัดกะเพราหมู", price: 45, qty: 1, note: "เผ็ดน้อย" },
         { name: "ชาไทย", price: 25, qty: 1 },
+      ],
+    },
+    {
+      id: "OD-006",
+      table: 1,
+      status: "รอทำ",
+      time: "58 นาทีที่แล้ว",
+      total: 50,
+      items: [
+        { name: "ข้าวผัดหมู", price: 50, qty: 1,  },
+      ],
+    },
+    {
+      id: "OD-007",
+      table: 2,
+      status: "รอทำ",
+      time: "58 นาทีที่แล้ว",
+      total: 155,
+      items: [
+        { name: "พิซซ่าฮาวาเอี้ยน", price: 155, qty: 1, note: "ไม่เอาสัปปะรด" },
+      ],
+    },
+    {
+      id: "OD-008",
+      table: 3,
+      status: "กำลังทำ",
+      time: "58 นาทีที่แล้ว",
+      total: 39,
+      items: [
+        { name: "ข้าวผัดกะเพราหมู", price: 39, qty: 1, },
+      ],
+    },
+    {
+      id: "OD-009",
+      table: 4,
+      status: "พร้อมเสิร์ฟ",
+      time: "58 นาทีที่แล้ว",
+      total: 90,
+      items: [
+        { name: "ข้าวผัดกะเพราหมู", price: 45, qty: 1, },
+        { name: "ชาเขียวสเลอปี้", price: 45, qty: 1 },
+      ],
+    },
+    {
+      id: "OD-010",
+      table: 5,
+      status: "กำลังทำ",
+      time: "58 นาทีที่แล้ว",
+      total: 75,
+      items: [
+        { name: "เฟรนซ์ฟรายชีส", price: 45, qty: 1, },
       ],
     },
   ]);

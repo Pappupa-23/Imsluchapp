@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import "./dashboard.css";
-import {
-  FaClock,
-  FaUtensils,
-  FaCheckCircle,
-  FaListAlt,
-} from "react-icons/fa";
-
-import { FaBoxArchive } from "react-icons/fa6"; // ✅ เพิ่มจาก fa6
-
+import { FaClock, FaUtensils, FaCheckCircle } from "react-icons/fa";
+import { FaBoxArchive } from "react-icons/fa6";
 
 export default function StaffDashboard() {
   const [orders, setOrders] = useState([
@@ -17,11 +10,11 @@ export default function StaffDashboard() {
       table: 3,
       status: "รอทำ",
       time: "5 นาทีที่แล้ว",
-      total: 205,
+      total: 175,
       items: [
-        { name: "ต้มยำกุ้ง", price: 120, qty: 1 },
-        { name: "ส้มตำ", price: 40, qty: 1 },
-        { name: "ข้าวผัด", price: 45, qty: 1 },
+        { name: "ข้าวไก่เทอริยากิ", price: 95, qty: 1 },
+        { name: "ไก่สติ๊ก", price: 60, qty: 1 },
+        { name: "น้ำเปล่า", price: 10, qty: 2 },
       ],
     },
     {
@@ -29,10 +22,10 @@ export default function StaffDashboard() {
       table: 1,
       status: "กำลังทำ",
       time: "56 นาทีที่แล้ว",
-      total: 150,
+      total: 95,
       items: [
-        { name: "ผัดไทย", price: 50, qty: 2, note: "ไม่เผ็ด" },
-        { name: "น้ำมะนาว", price: 25, qty: 2 },
+        { name: "ข้าวผัดกะเพราหมู", price: 45, qty: 1, note: "ไม่เผ็ด" },
+        { name: "โคล่า", price: 25, qty: 2 },
       ],
     },
     {
@@ -40,10 +33,10 @@ export default function StaffDashboard() {
       table: 5,
       status: "พร้อมเสิร์ฟ",
       time: "68 นาทีที่แล้ว",
-      total: 140,
+      total: 175,
       items: [
-        { name: "ไก่ทอด", price: 80, qty: 1 },
-        { name: "น้ำส้ม", price: 30, qty: 2 },
+        { name: "ฮอทด็อกเบคอน", price: 85, qty: 1 },
+        { name: "นมฮอกไกโดสเลอปี้", price: 45, qty: 2 },
       ],
     },
     {
@@ -51,11 +44,72 @@ export default function StaffDashboard() {
       table: 2,
       status: "พร้อมเสิร์ฟ",
       time: "58 นาทีที่แล้ว",
-      total: 145,
+      total: 155,
       items: [
-        { name: "แกงเขียวหวาน", price: 70, qty: 1, note: "เผ็ดน้อย" },
-        { name: "น้ำมะนาว", price: 25, qty: 3 },
+        {
+          name: "เบอร์เกอร์หมู",
+          price: 85,
+          qty: 1,
+          note: "ท็อปปิ้ง=เบคอน+25฿,ผัก=ปกติ,ซอส=ซอสปกติ(มะเขือเทศ+พริก+มายองเนศ)",
+        },
+        { name: "พีชสเลอปี้", price: 45, qty: 1 },
       ],
+    },
+    {
+      id: "OD-005",
+      table: 4,
+      status: "รอทำ",
+      time: "58 นาทีที่แล้ว",
+      total: 70,
+      items: [
+        { name: "ข้าวผัดกะเพราหมู", price: 45, qty: 1, note: "เผ็ดน้อย" },
+        { name: "ชาไทย", price: 25, qty: 1 },
+      ],
+    },
+    {
+      id: "OD-006",
+      table: 1,
+      status: "รอทำ",
+      time: "58 นาทีที่แล้ว",
+      total: 50,
+      items: [{ name: "ข้าวผัดหมู", price: 50, qty: 1 }],
+    },
+    {
+      id: "OD-007",
+      table: 2,
+      status: "รอทำ",
+      time: "58 นาทีที่แล้ว",
+      total: 155,
+      items: [
+        { name: "พิซซ่าฮาวาเอี้ยน", price: 155, qty: 1, note: "ไม่เอาสัปปะรด" },
+      ],
+    },
+    {
+      id: "OD-008",
+      table: 3,
+      status: "กำลังทำ",
+      time: "58 นาทีที่แล้ว",
+      total: 39,
+      items: [{ name: "ข้าวผัดกะเพราหมู", price: 39, qty: 1 }],
+    },
+    {
+      id: "OD-009",
+      table: 4,
+      status: "พร้อมเสิร์ฟ",
+      time: "58 นาทีที่แล้ว",
+      total: 90,
+      items: [
+        { name: "ข้าวผัดกะเพราหมู", price: 45, qty: 1 },
+        { name: "ชาเขียวสเลอปี้", price: 45, qty: 1 },
+      ],
+    },
+    {
+      id: "OD-010",
+      table: 5,
+      status: "กำลังทำ",
+      time: "58 นาทีที่แล้ว",
+      total: 75,
+      items: [{ name: "เฟรนซ์ฟรายชีส", price: 45, qty: 1 }],
     },
   ]);
 
@@ -146,7 +200,6 @@ export default function StaffDashboard() {
                     <div className="order-header">
                       <div className="order-header-left">
                         <div className="order-id">{order.id}</div>
-
                         <div>โต๊ะ {order.table}</div>
                         <div className={`status ${order.status}`}>
                           {getIcon(order.status)} {order.status}
@@ -164,7 +217,14 @@ export default function StaffDashboard() {
                             <span>
                               {item.qty}x {item.name}
                             </span>
-                            {item.note && <small>หมายเหตุ: {item.note}</small>}
+                            {item.note && (
+                              <div className="item-note">
+                                <strong>หมายเหตุ:</strong>
+                                {item.note.split(",").map((line, index) => (
+                                  <p key={index}>{line.trim()}</p>
+                                ))}
+                              </div>
+                            )}
                           </div>
                           <span className="price">฿{item.price}</span>
                         </div>
